@@ -13,7 +13,7 @@ function App() {
   }
   const submit = async () => {
     const urlResult =  await axios({
-      url:`http://localhost:5000/url/check`,//correct url
+      url:`https://url-slug-node.herokuapp.com/url`,
       method:"post",
       data:{
           url:url,
