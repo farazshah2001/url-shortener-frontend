@@ -7,6 +7,7 @@ function App() {
   const [slug, setslug] = useState("");/**state variable for slug generated */
   const [redirecturl, setredirecturl] = useState("");/**state variable for redirect url got from the server*/
   const [message, setmessage] = useState("")/**state variable for error message  generated due to invalid parameter */
+  const [copied, setcopied] = useState(false);
 
   const onurlchange = (e) => {/**controlled form */
     seturl(e.target.value);
@@ -48,7 +49,14 @@ function App() {
         </div>
         <p className={` text-red-600 text-lg text-center `}>{message}</p>{/**error message if any , fetched from backend on button click */}
         {/**the slug or redirect url generated with conditional styling */}
-        <p className={`${redirecturl?"text-blue-800":""} text-blue-600 italic text-lg my-6 text-center`}>{redirecturl?`you are being redirected to '${redirecturl}'`:slug}</p>
+        <p onClick={() => {
+          navigator.clipboard.writeText(slug);
+          setcopied(true);
+          setTimeout(() => {
+            setcopied(false)
+          }, 2000);
+        }} className={`${redirecturl?"text-blue-800":""} cursor-pointer text-blue-600 italic text-lg my-6 text-center`}>{redirecturl?`you are being redirected to '${redirecturl}'`:slug}</p>
+        {copied && <p className="text-gray-400 text-sm text-center">link copied</p>}
         {/**centered submit button */}
         <div className=" flex justify-center  my-12"> 
             <button onClick={()=>{submit()}} className="w-24 h-12 text-lg rounded border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">Submit</button>
