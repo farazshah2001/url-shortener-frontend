@@ -37,7 +37,7 @@ function App() {
   }
   return (
     <div className="h-screen flex justify-center items-center bg-gray-100">
-      <div className="w-10/12 lg:w-1/2 bg-white shadow-xl self-center py-12 px-16 border-4 border-blue-500 rounded">
+      <div className="w-10/12 lg:w-1/2 bg-white shadow-xl self-center py-6 lg:py-12 px-6 lg:px-16 border-4 border-blue-500 rounded">
         <h1 className="text-4xl my-4 text-blue-600 font-semibold text-center uppercase">URL Shortener</h1>
         <div className="grid grid-cols-3 my-12">
           <p className="text-gray-700 text-lg transform translate-y-1">Enter the url : </p>
